@@ -15,5 +15,5 @@ def main():
             main() 
     else:
         print("Некорректное число. ")
-        main() 
+        main()
 main()
