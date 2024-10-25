@@ -10,7 +10,7 @@ def main():
                 while summ < N:
                     i += 1
                     summ += i
-                print(i, summ)
+                print("K: ", i, " summa: ", summ)
         else:
             print("Некорректное число. ")
             main()
