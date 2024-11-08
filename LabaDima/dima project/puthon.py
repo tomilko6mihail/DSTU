@@ -1,3 +1,5 @@
+import random
+
 #1
 
 
@@ -15,28 +17,28 @@
 # print(f'Количесвто слов в тексте: {total + 1}')
 
 #3
-# try:
-#     digits, count = [float(input()) for _ in range(int(input('Введите количество чисел (вводите через Enter): ')))], 0
-#     a, b = float(input('Введите левую грницу: ')), float(input('Введите правую границу: '))
+try:
+    digits, count = [random.randint(-10, 10) for _ in range(int(input('Введите количество чисел: ')))], 0
+    a, b = float(input('Введите левую грницу: ')), float(input('Введите правую границу: '))
+    print(digits)
+    for el in digits:
+        if el >= 0:
+            count += el
+        else:
+            break
+    print(f'Сумма элементов до первого отрицательного элемента: {count}')
+    
+    result = []
+    for ty in range(len(digits)):
+        if digits[ty] < 0:
+            digits[ty] *= -1
+        if a <= digits[ty] <= b:
+            result = digits[ty + 1:]
+    
 
-#     for el in digits:
-#         if el >= 0:
-#             count += el
-#         else:
-#             break
-#     print(f'Сумма элементов до первого элемента: {count}')
+    result += '0' * (len(digits) - len(result))
+    result = [int(i) for i in result]
 
-#     result, d = [], 0
-#     for ty in range(len(digits)):
-#         if digits[ty] < 0:
-#             digits[ty] *= -1
-#         if a <= digits[ty] <= b:
-#             result = digits[ty + 1:]
-#             d += 1
-
-#     result += '0' * d
-#     result = [int(i) for i in result]
-
-#     print(result)
-# except:
-#     print('ВВЕДЕНО НЕВЕРНОЕ ЗНАЧЕНИЙЕ')
+    print(result)
+except:
+    print('ВВЕДЕНО НЕВЕРНОЕ ЗНАЧЕНИЙЕ')
