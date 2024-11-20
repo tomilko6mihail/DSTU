@@ -3,18 +3,22 @@ import random
 #1
 
 
-# print(f'Количество букв А: {len([i for i in input('Введите ваш текст: ') if i == 'А'])}')
+# print(f'Количество букв А: {len([i for i in input('Введите ваш текст: ') if i == 'А' or i == 'A'])}')
 
 #2
 
 # ascii = 'АБВГДЕËЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмеопрстуфхцчшщъыьэюя0123456789'
 # words, total = input('Введите ваш текст: '), 0
-# for elem in range(len(words)):
-#     if words[elem - 1] in ascii and words[elem] == ' ':
-#         total += 1
-# if words[len(words) - 1] == ' ':
-#     total -= 1
-# print(f'Количесвто слов в тексте: {total + 1}')
+# if words == '':
+#     print("Ошибка")
+# else:
+
+#     for elem in range(len(words)):
+#         if words[elem - 1] in ascii and words[elem] == ' ':
+#             total += 1
+#     if words[len(words) - 1] == ' ':
+#         total -= 1
+#     print(f'Количесвто слов в тексте: {total + 1}')
 
 #3
 try:
@@ -33,7 +37,7 @@ try:
         if digits[ty] < 0:
             digits[ty] *= -1
         if a <= digits[ty] <= b:
-            result = digits[ty + 1:]
+            result += digits[ty:]
     
 
     result += '0' * (len(digits) - len(result))
