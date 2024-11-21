@@ -19,14 +19,14 @@ def f():
             maxsum = 0
             localsum = 0
             curIndex = 0
-            for i in range(M):
-                for j in range(N):
+            for i in range(M): #сначала двигаемся по столбцу
+                for j in range(N): # потом по строкам, чтоб найти сумму по оси y
                     localsum += li[j][i] #читаем таблицу сверху вниз слева направо
-                if localsum >= maxsum:
+                if localsum >= maxsum: #ну это у нас обычный счетчик
                     maxsum = localsum
-                    curIndex = i
+                    curIndex = i # ловим айдишник солбца максимальной суммы на данный момент
                 localsum = 0
-            print("Столбец с наибольшей суммой элементов: ", curIndex + 1)
+            print("Столбец с наибольшей суммой элементов: ", curIndex + 1) # и тут юзаем его
             return 0
     except:
         print("Неверно введены значения.")
