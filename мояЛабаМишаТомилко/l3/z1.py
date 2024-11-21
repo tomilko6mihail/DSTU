@@ -26,7 +26,7 @@ def f():
                     maxsum = localsum
                     curIndex = i
                 localsum = 0
-            print(curIndex + 1)
+            print("Столбец с наибольшей суммой элементов: ", curIndex + 1)
             return 0
     except:
         print("Неверно введены значения.")
