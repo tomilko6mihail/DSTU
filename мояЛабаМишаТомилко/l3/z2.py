@@ -16,17 +16,19 @@ def f():
                     print(str(li[i][j]) + "   ", end='')
                 print(sep="/")
 
-            maxsum = 0
-            localsum = 0
-            curIndex = 0
-            for i in range(M):
-                for j in range(N):
-                    localsum += li[j][i] #читаем таблицу сверху вниз слева направо
-                if localsum >= maxsum:
-                    maxsum = localsum
-                    curIndex = i
-                localsum = 0
-            print(curIndex + 1)
+            localMax = 0
+            idN = 0
+            idM = 0
+            diction = {}
+            for i in range(N):
+                for j in range(M):
+                    if li[i][j] >= localMax:
+                        localMax = li[i][j]
+                        idM = j
+                        idN = i
+                diction[i] = [localMax, idN, idM]
+                localMax = 0
+            print(diction)
             return 0
     except:
         print("Неверно введены значения.")
