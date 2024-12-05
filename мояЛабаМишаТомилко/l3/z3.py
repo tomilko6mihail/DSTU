@@ -13,7 +13,7 @@ def f():
             for i in range(10): #заполнение словаря повторениями в строке
                 diction[i] = strr.count(i)
             needInt = int(input("Введите интересующее число: "))
-            if needInt < 0:
+            if needInt < 0: 
                 40/0
             else:
                 print("Количество ", needInt, " в строке: ", diction[needInt]) #вывод по ключу
