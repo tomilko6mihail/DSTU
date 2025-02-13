@@ -14,6 +14,7 @@ try:
                 return -1
         # по формуле Герона (впервые вижу такую)
         poluPerimetr = (x + y + z) / 2
+        print("Периметр треугольника: ",x+y+z)
         return (poluPerimetr * (poluPerimetr - x) * (poluPerimetr - y) * (poluPerimetr - z))**0.5
 
     for i in permutations(li, 3):
