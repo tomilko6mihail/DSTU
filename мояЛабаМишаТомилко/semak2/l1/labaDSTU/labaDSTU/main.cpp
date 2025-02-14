@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 float find_Z(float x,  float y){
@@ -31,6 +32,7 @@ int main() {
         cout << "Некорректный формат данных!" << endl;
         goto cinx;
     }
+    cout << x << endl;
     ciny:
     cout << "Введите у: ";
     cin >> yStr;
