@@ -47,7 +47,7 @@ int main() {
     srand(time(0));
 // Задание 1
 //    int k = rand() % (9 - 1 + 1) + 1;
-//    int l = rand() % (10 - k + 1) + k;
+//    int l = rand() % (9 - k + 1) + k;
 //    int ma[10];
 //    int *index;
 //    index = ma;
@@ -62,16 +62,15 @@ int main() {
 //    cout << "]" << endl;
 //    
 //    index = ma;
-//    int sumValues = 0;
+//    float sumValues = 0;
 //    
 //    for(int i = k; i <= l; i++){
 //        index = ma + i;
-//        cout << *index << endl;
 //        sumValues += *index;
 //    }
 //    cout << "Среднее арифметическое от индекса " << k << " до индекса " << l << ": " << sumValues / (l - k + 1) << endl;
     
-//Задание 2
+////Задание 2
     random_device rd;
     mt19937 gen(rd());
     uniform_real_distribution<> dis(1.0, 10.0);
