@@ -2,7 +2,7 @@
 #include <random>
 #include <string>
 #include <cmath>
-#include <algorithm>
+
 using namespace std;
 
 bool validation(const string str){
@@ -11,7 +11,6 @@ bool validation(const string str){
         return false;
     }
     int startIndex = str[0] == '-' ? 1 : 0;
-    
     
     for (int i = startIndex; i < str.length(); i++ ){
         if(isspace(str[i])){
@@ -44,7 +43,9 @@ int main() {
     met1:
     string lenStr;
     int len;
+    cout << "Введите размер массива: ";
     cin >> lenStr;
+    
     if(validation(lenStr)){
         len = stoi(lenStr);
     }else{
@@ -65,6 +66,7 @@ int main() {
     int currentIdmin = 0;
     float max = 0.0;
     int currentIdmax = 0;
+    
     for(int i = 0; i < len; i++){
         if(fabs(arr[i]) < min){
             min = fabs(arr[i]);
@@ -77,6 +79,7 @@ int main() {
     }
     
     float proizved = 1.0;
+    
     for(int i = currentIdmax + 1; i < len; i++){
         proizved *= arr[i];
     }
@@ -102,12 +105,20 @@ int main() {
     }
     
     cout << endl;
+    cout << "1)"<<endl;
     cout << "Номер минимального по модулю числа: " << currentIdmin << endl;
-    cout << "Номер max по модулю числа: " << currentIdmax << endl;
-    cout << "Произведение: " << proizved << endl;
+    cout << "Номер максимального по модулю числа: " << currentIdmax << endl;
+    cout << "2)"<<endl;
+    if(currentIdmax == len - 1){
+        cout << "После максимального элемента ничего нет" << endl;
+    } else {
+        cout << "Произведение: " << proizved << endl;
+    }
+    cout << "3)"<<endl;
+    cout << "Отсортированный массив: " << endl;
     
     for (int i = 0; i < len; i++) {
         cout << arr[i] << " ";
     }
-    
+    cout << endl;
 }
