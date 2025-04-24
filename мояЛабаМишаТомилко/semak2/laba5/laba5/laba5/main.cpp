@@ -10,7 +10,7 @@
 
 using namespace std;
 
-bool validation(const string str){
+bool validationFloat(const string str){
     bool flagDot = false;
     if (str.empty()){
         cout << "Строка не может быть пустой" << endl;
@@ -34,6 +34,41 @@ bool validation(const string str){
                 return false;
             }
             flagDot = true;
+        }
+        else if (!isdigit(str[i])){
+            cout << "В числе не могут быть буквы" << endl;
+            return false;
+        }
+    }
+    if(startIndex < str.length()){
+        return true;
+    }
+    else{
+        cout << "Минус это не число" << endl;
+        return false;
+    }
+}
+
+bool validationInt(const string str){
+    if (str.empty()){
+        cout << "Строка не может быть пустой" << endl;
+        return false;
+    }
+    int startIndex = str[0] == '-' ? 1 : 0;
+    
+    
+    for (int i = startIndex; i < str.length(); i++ ){
+        if(str[0] == '.'){
+            cout << "Число не должно содержать точку" << endl;
+            return false;
+        }
+        if(isspace(str[i])){
+            cout << "Число не должно содержать пробелы" << endl;
+            return false;
+        }
+        if (str[i] == '.'){
+            cout << "Число не должно содержать точку" << endl;
+            return false;
         }
         else if (!isdigit(str[i])){
             cout << "В числе не могут быть буквы" << endl;
@@ -74,12 +109,11 @@ int calculateProduct(float* A, float* B, int N) {
         }
         return productA;
     } else {
-        int sumA = 0, sumB = 0;
+        int mnozh = 1;
         for (int i = 0; i < N; i++) {
-            sumA += A[i];
-            sumB += B[i];
+            mnozh *= (A[i] + B[i]);
         }
-        return sumA * sumB;
+        return mnozh;
     }
 }
 
@@ -88,12 +122,18 @@ int main(int argc, const char * argv[]) {
     met10:
     
     int k;
+    string strK;
     cout << "----------МЕНЕДЖЕР ЗАДАНИЙ----------" << endl;
     cout << "Введите 1, чтобы открыть 1 задание" << endl;
     cout << "Введите 2, чтобы открыть 2 задание" << endl;
     cout << "Введите 3, чтобы открыть 3 задание" << endl;
     cout << "Номер задания: ";
-    cin >>k;
+    getline(cin, strK);
+    if(validationInt(strK)){
+        k = stoi(strK);
+    } else {
+        goto met10;
+    }
     switch (k) {
         case 1:
         {
@@ -105,9 +145,13 @@ int main(int argc, const char * argv[]) {
                 
                 cout << "Введите радиус круга R: ";
                 getline(cin, strR);
-                if(validation(strR)){
+                if(validationFloat(strR)){
                     R = stoi(strR);
                 } else {
+                    goto met0;
+                }
+                if(R < 0){
+                    cout << "Радиус не может быть меньше 0" << endl;
                     goto met0;
                 }
                 cout << "Длина круга = " << CircleS(R) << endl;
@@ -123,12 +167,15 @@ int main(int argc, const char * argv[]) {
             
             cout << "Введите длину массива: ";
             getline(cin, strN);
-            if(validation(strN)){
+            if(validationInt(strN)){
                 N = stoi(strN);
             } else {
                 goto met1;
             }
-            
+            if(N < 0){
+                cout << "Длина массива не может быть меньше 0" << endl;
+                goto met1;
+            }
             float* arrA = new float[N];
             float* arrB = new float[N];
             
@@ -138,7 +185,7 @@ int main(int argc, const char * argv[]) {
                 cout << "Элемент " << i + 1 << ": ";
                 string numStr;
                 cin >> numStr;
-                if(validation(numStr)){
+                if(validationFloat(numStr)){
                     arrA[i] = stoi(numStr);
                 } else {
                     goto met2;
@@ -152,7 +199,7 @@ int main(int argc, const char * argv[]) {
                 cout << "Элемент " << i + 1 << ": ";
                 string numStr;
                 cin >> numStr;
-                if(validation(numStr)){
+                if(validationFloat(numStr)){
                     arrB[i] = stoi(numStr);
                 } else {
                     goto met3;
@@ -172,7 +219,7 @@ int main(int argc, const char * argv[]) {
             
             cout << "Введите N: ";
             getline(cin, strNumm);
-            if(validation(strNumm)){
+            if(validationInt(strNumm)){
                 Numm = stoi(strNumm);
             } else {
                 goto met4;
@@ -181,7 +228,7 @@ int main(int argc, const char * argv[]) {
         met5:
             cout << "Введите S: ";
             getline(cin, strS);
-            if(validation(strS)){
+            if(validationInt(strS)){
                 S = stoi(strS);
             } else {
                 goto met5;
