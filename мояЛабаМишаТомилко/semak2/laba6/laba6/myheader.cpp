@@ -44,7 +44,6 @@ bool students::validationInt(const string str) {
 void students::addStudents(){
     cout << "----------Добавление студентов---------" << endl;
     
-    count_students:
     string strN;
     int N;
     
@@ -55,7 +54,11 @@ void students::addStudents(){
         
         if (validationInt(strN)) {
             N = stoi(strN);
-            break;
+            if(N < 0) {
+                cout << "Отчислять студентов нельзя. Введите число больше или равное 0." << endl;
+            } else {
+                break;
+            }
         }
     }
     
@@ -79,7 +82,11 @@ void students::addStudents(){
             
             if (validationInt(str_peresd)) {
                 c_peresd = stoi(str_peresd);
-                break;
+                if(c_peresd < 0){
+                    cout << "Пересдачи не могут быть равны нулю или меньше" << endl;
+                } else {
+                    break;
+                }
             }
         }
         
@@ -90,7 +97,8 @@ void students::addStudents(){
 }
 
 bool students::sortirovka(const student& a, const student& b) {
-    return a.count_peresdachi > b.count_peresdachi; // Сортировка по убыванию
+    
+    return a.count_peresdachi > b.count_peresdachi;
 }
 
 void students::displayStudents(){
@@ -113,9 +121,13 @@ void students::mapBukvi(){
         string text;
         string alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         while (getline(file, text)) {
-            for (char c : text) {
-                if (alph.find(c) != string::npos){
-                    mapa[c] += 1;
+            if(text.length() == 0){
+                cout << "Файл пуст!" << endl;
+            } else {
+                for (char ch : text){
+                    if(text.find(ch) != string::npos){
+                        mapa[ch] += 1;
+                    }
                 }
             }
         }

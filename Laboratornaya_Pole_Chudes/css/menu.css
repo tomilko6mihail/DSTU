@@ -1,0 +1,17 @@
+main{
+    width: 100vw;
+    height: 100vh;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+main button{
+    width: 60%;
+    padding: 20px;
+    font-size: 25px;
+    border: none;
+    border-radius: 20px;
+    background-color: blueviolet;
+}
