@@ -3,18 +3,31 @@ while True:
     text = input("Введите текст, оканчивающийся точкой: ")
     letters = set()
     result = set()
-    
-    if '.' in text:
-        for char in text:
-            if char == '.':
-                break
-            if char in letters:
-                result.add(char)
-            else:
-                letters.add(char)
-        break
+    letterss = 'abcdefghijklmnopqrstuvwxyz.'
+    isValidText = False
+    for letter in text:
+        if letter not in letterss:
+            isValidText = False
+            break
+        else:
+            isValidText = True
+    if isValidText:
+        if '.' in text:
+            for char in text:
+                if char == '.':
+                    break
+                if char == ' ':
+                    pass
+                else:
+                    if char in letters:
+                        result.add(char)
+                    else:
+                        letters.add(char)
+            break
+        else:
+            print("Текст должен оканчиваться на точку!!")
     else:
-        print("Текст должен оканчиваться на точку!!")
+        print("Должны быть только латинские строчные буквы")
 if not result:
     print("В тексте нет повторяющихся букв")
 else:
@@ -23,8 +36,8 @@ else:
 #2 задание
 while True:
     text2 = input("Введите непустую последовательность символов: ")
-    if ' ' in text2:
-        print("Последовательность не должна включать пробел!!")
+    if '' == text2:
+        print("Последовательность не должна быть пустой!!")
     else:
         result2 = set()
         need_char_set = set()
@@ -39,5 +52,8 @@ while True:
             if char in need_char_set:
                 result2.add(char)
         break
-
-print("Найденые нужные символы: ", ', '.join(sorted(result2)))
+if not result2:
+    print("В тексте нет букв, удовлетворяющих условию")
+else:  
+    print("Найденые нужные символы: ", ', '.join(sorted(result2)))
+    print(len(result2), " - длина множества")
