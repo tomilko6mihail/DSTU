@@ -49,7 +49,7 @@ T getValidInput(const string& prompt, T min_val, T max_val) {
         cin >> value;
         
         if (cin.fail() || value < min_val || value > max_val) {
-            cout << "Ошибка ввода! Введите число от " << min_val << " до " << max_val << endl;
+            cout << "Ошибка ввода. Введите число от " << min_val << " до " << max_val << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         } else {
@@ -94,7 +94,7 @@ Pointer* NewPointer(void* p, size_t bytes) {
     
     for (int i = 0; i < pointer_count; i++) {
         if (pointers[i].addr == p) {
-            pointers[i].is_valid = false; //выключаем старый указатель, якобы теряя доступ к занятой памяти. после этого создаем совершенно новый указатель с новым адресом и ссылкой на новые данные
+            pointers[i].is_valid = false;
             cout << "Утечка памяти, старая память не освобождена" << endl;
             break;
         }
@@ -163,7 +163,7 @@ void FreePointer(Pointer* p) {
     
     char* addr = static_cast<char*>(p->addr);
     char* seg_start = static_cast<char*>(p->segment->memory);
-    size_t offset = addr - seg_start; // offset - смещение назад
+    size_t offset = addr - seg_start;
     
     for (size_t i = 0; i < p->size; i++) {
         p->segment->used[offset + i] = false;
@@ -286,6 +286,9 @@ void demonstrateLeak() {
     
     FreePointer(p1);
     FreePointer(p2);
+    FreePointer(p3);
+    FreePointer(p3);
+    FreePointer(p3);
     FreePointer(p3);
 }
 
