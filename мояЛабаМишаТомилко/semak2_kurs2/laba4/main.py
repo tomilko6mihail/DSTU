@@ -119,9 +119,17 @@ def study_order():
     sorted_arr = base[:]
     reversed_arr = list(reversed(base))
 
-    p25 = base[:]; random.shuffle(p25[int(n * 0.25):])
-    p50 = base[:]; random.shuffle(p50[int(n * 0.50):])
-    p75 = base[:]; random.shuffle(p75[int(n * 0.75):])
+    def gen_arr(arr, precent):
+        res = arr[:]
+        start_idx = int(len(arr) * precent)
+        rand = res[start_idx:]
+        random.shuffle(rand)
+        res[start_idx:] = rand
+        return res
+
+    p25 = gen_arr(base,  0.25)
+    p50 = gen_arr(base,  0.5)
+    p75 = gen_arr(base,  0.75)
 
     states = [("Random", random_arr), ("Sorted", sorted_arr), ("Reversed", reversed_arr),
               ("25%", p25), ("50%", p50), ("75%", p75)]
